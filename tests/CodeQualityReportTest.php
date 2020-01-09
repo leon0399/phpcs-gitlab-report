@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
-use Satesh\Phpcs\GitLabReport;
+use Satesh\Phpcs\CodeQualityReport;
 
-class GitLabReportTest extends TestCase
+class CodeQualityReportTest extends TestCase
 {
     public function testGenerateFileReport(): string
     {
@@ -11,7 +11,7 @@ class GitLabReportTest extends TestCase
 
         $this->expectOutputString($reportOutput);
 
-        $gitLabReport = new GitLabReport();
+        $gitLabReport = new CodeQualityReport();
 
         $returnValue = $gitLabReport->generateFileReport($this->getPhpcsReport());
 
@@ -27,7 +27,7 @@ class GitLabReportTest extends TestCase
     {
         $this->expectOutputString('[' . rtrim($fileReport, ',') . ']');
 
-        $gitLabReport = new GitLabReport();
+        $gitLabReport = new CodeQualityReport();
 
         $gitLabReport->generate($fileReport, 1, 1, 1, 1);
     }

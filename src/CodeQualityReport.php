@@ -5,7 +5,7 @@ namespace Satesh\Phpcs;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Reports\Report;
 
-class GitLabReport implements Report
+class CodeQualityReport implements Report
 {
     /**
      * {@inheritDoc}
