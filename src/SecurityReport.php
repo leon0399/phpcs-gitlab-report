@@ -78,6 +78,10 @@ class SecurityReport implements Report
         $interactive = false,
         $toScreen = true
     ): void {
-        echo '[' . rtrim($cachedData, ',') . ']';
+        echo '{';
+        echo '"version": "2.0", ';
+        echo '"vulnerabilities": [' . rtrim($cachedData, ',') . '], ';
+        echo '"remediations": []';
+        echo '}';
     }
 }

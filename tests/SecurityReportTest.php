@@ -26,7 +26,7 @@ class SecurityReportTest extends TestCase
      */
     public function testGenerate(string $fileReport): void
     {
-        $this->expectOutputString('[' . rtrim($fileReport, ',') . ']');
+        $this->expectOutputString($this->getGitLabCompleteReport());
 
         $gitLabReport = new SecurityReport();
 
@@ -36,6 +36,11 @@ class SecurityReportTest extends TestCase
     private function getGitLabReport(): string
     {
         return '{"category":"sast","name":"PHP files must only contain PHP code","message":"PHP files must only contain PHP code","severity":"High","scanner":{"id":"phpcs_security_audit","name":"phpcs-security-audit native"},"location":{"file":"files\/TestClass.php","start_line":3},"identifiers":{"type":"phpcs_security_audit_source","name":"Generic.Files.InlineHTML.Found","value":"Generic.Files.InlineHTML.Found"}},';
+    }
+
+    private function getGitLabCompleteReport(): string
+    {
+        return '{"version": "2.0", "vulnerabilities": [' . rtrim($this->getGitLabReport(), ',') . '], "remediations": []}';
     }
 
     private function getPhpcsReport(): array
